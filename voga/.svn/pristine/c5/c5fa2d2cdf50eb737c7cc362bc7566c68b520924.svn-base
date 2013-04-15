@@ -1,0 +1,89 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package view.admin.cadastros;
+
+import controller.dao.model.FuncionarioDAO;
+import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import model.Funcionario;
+import view.interfaces.BeanInteface;
+
+/**
+ *
+ * @author Lucas
+ */
+@ManagedBean
+@RequestScoped
+public class funcionarioBean implements BeanInteface<Funcionario> {
+
+    private Funcionario funcionario;
+    private FuncionarioDAO DAOfuncionario = new FuncionarioDAO(Funcionario.class);
+    private String confirmacaoSenha;
+
+    public funcionarioBean() {
+        funcionario = new Funcionario();
+        confirmacaoSenha = "";
+    }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public String getConfirmacaoSenha() {
+        return confirmacaoSenha;
+    }
+
+    public void setConfirmacaoSenha(String confirmacaoSenha) {
+        this.confirmacaoSenha = confirmacaoSenha;
+    }
+
+    @Override
+    public String novo() {
+        funcionario = new Funcionario();
+        confirmacaoSenha = "";
+        return "adm.cadastro.funcionario";
+    }
+
+    @Override
+    public String submit() {
+        FacesContext ct = FacesContext.getCurrentInstance();
+        if (!(funcionario.getSenha().equals(confirmacaoSenha))) {
+            ct.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Senhas Diferentes!", ""));
+            return "";
+        }else{
+            Funcionario f = DAOfuncionario.selectByLogin(funcionario.getLogin());
+            if(f == null){
+                DAOfuncionario.save(funcionario);
+                ct.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Funcionario cadastrado!", ""));
+                return "home.adm";
+            }else{
+                ct.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario ja existe!", ""));
+                return "";
+            }
+        }
+    }
+
+    @Override
+    public String edit() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String delete() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Funcionario> getAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}

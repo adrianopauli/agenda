@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition template="/template/template_admin.xhtml">
+        <ui:define name="corpo">
+            <h:form>
+                <p:panel header="Funcionario">
+                    <p:growl id="gr_message" />
+                    <h:inputHidden value="#{funcionarioBean.funcionario.codigo}" />
+
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Nome:" />
+                        <p:inputText id="funcionario_name" 
+                                     value="#{funcionarioBean.funcionario.name}"
+                                     validatorMessage="Nome inválido!">
+                            <f:validateLength minimum="3" />
+                            <f:validateRequired />
+                        </p:inputText>
+
+                        <h:outputLabel value="Login:" />
+                        <p:inputText id="funcionario_login" 
+                                     value="#{funcionarioBean.funcionario.login}" 
+                                     required="true"
+                                     requiredMessage="Login inválido!"/>
+                        
+                        <h:outputLabel value="Senha: " />
+                        <p:password id="funcionario_senha" 
+                                    value="#{funcionarioBean.funcionario.senha}" 
+                                    validatorMessage="Senha inválida!">
+                            <f:validateLength minimum="6" />
+                            <f:validateRequired />
+                        </p:password>
+                        
+                        <h:outputLabel value="Confirma Senha:" />
+                        <p:password id="funcionario_senha_" 
+                                    value="#{funcionarioBean.confirmacaoSenha}" 
+                                    validatorMessage="Confirma Senha inválida!">
+                            <f:validateLength minimum="6" />
+                            <f:validateRequired />
+                        </p:password>
+
+                        <h:outputLabel value="Administrador:" />
+                        <p:selectBooleanCheckbox value="#{funcionarioBean.funcionario.admin}" 
+                                                 itemLabel="Esse funcionario é um Administrado do Sistema?" />
+                        <h:outputLabel value="Permitir Agendamento:" />
+                        <p:selectOneRadio value="#{funcionarioBean.funcionario.ativo}" >
+                            <f:selectItem itemLabel="Sim" itemValue="true" />
+                            <f:selectItem itemLabel="Não" itemValue="false" />
+                        </p:selectOneRadio>
+                        <p:commandButton value="Salvar" 
+                                         update="gr_message" 
+                                         action="#{funcionarioBean.submit()}"/>
+                    </h:panelGrid>
+                </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

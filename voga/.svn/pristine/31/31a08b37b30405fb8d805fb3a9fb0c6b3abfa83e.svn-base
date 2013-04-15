@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="template/template_publico.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="ajuda.xhtml" x="429" y="300" zoom="true"/>
+        <Node id="template/menu/menu_publico.xhtml" x="966" y="188" zoom="true"/>
+        <Node id="index.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="*" x="317" y="33" zoom="true"/>
+        <Node id="sobre.xhtml" x="293" y="388" zoom="true"/>
+        <Node id="template/template_admin.xhtml" x="969" y="141" zoom="true"/>
+        <Node id="template/includes/rodape.xhtml" x="884" y="61" zoom="true"/>
+        <Node id="template/includes/baner.xhtml" x="911" y="384" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

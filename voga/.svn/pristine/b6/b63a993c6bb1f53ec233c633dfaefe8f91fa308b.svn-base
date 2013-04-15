@@ -1,0 +1,11 @@
+package controller.dao.model;
+
+import controller.dao.db.GenericDAOImplementacao;
+import model.Status;
+
+public class StatusDAO extends GenericDAOImplementacao<Status> {
+
+	public StatusDAO(Class<Status> clazz) {
+		super(clazz);
+	}
+}

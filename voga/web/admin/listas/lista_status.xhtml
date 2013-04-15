@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition>
+        <ui:define name="corpo">
+            <h:form>
+                <p:growl id="gr_message" />
+                <p:dataTable var="status" value="#{statusBean.all}"
+                             paginator="true" paginatorPosition="bottom" emptyMessage="Não há Status Cadastrados">
+                    
+                    <p:column headerText="Descrição">
+                        <h:outputText value="#{status.descricao}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Cor">
+                        <h:outputText value="#{status.color}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Operações">
+                        <h:commandLink action="adm.cadastro.funcionario">
+                            <h:graphicImage library="imagens" name="edit.png" />
+                            <f:setPropertyActionListener target="#{statusBean.edit()}" 
+                                                         value="#{status}" />
+                        </h:commandLink>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

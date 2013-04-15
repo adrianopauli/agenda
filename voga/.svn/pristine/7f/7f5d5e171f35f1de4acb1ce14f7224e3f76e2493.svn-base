@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition id="menu">
+        <h:form>
+            <p:menubar autoDisplay="false">
+                <p:menuitem value="Home" action="home.home" ajax="false"/>
+                <p:submenu label="Cadastros">
+                    <p:menuitem value="Funcionarios" action="#{funcionarioBean.novo()}" ajax="false"/>
+                    <p:menuitem value="Status" />
+                </p:submenu>
+                <p:submenu label="Consultas">
+                    <p:menuitem value="Agendamentos" />
+                    <p:menuitem value="Funcionarios" />
+                </p:submenu>
+                <p:menuitem value="Deslogar" action="#{loginBean.deslogar()}" ajax="false"/>          
+            </p:menubar>
+        </h:form> 
+    </ui:composition>
+</html>

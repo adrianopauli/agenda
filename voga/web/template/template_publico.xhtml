@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <title>. : Agenda Voga : .</title>
+        <h:outputStylesheet library="css" name="estilos.css" />
+    </h:head>
+    <h:body>
+        <ui:include src="/template/includes/baner.xhtml" />
+        
+        <ui:include src="/template/menu/menu_publico.xhtml" />
+        
+        <div id="corpo">
+            <p:growl id="gr_message" />
+            <ui:insert name="corpo" />
+        </div>
+        
+        <ui:include src="/template/includes/rodape.xhtml" />
+    </h:body>
+</html>
