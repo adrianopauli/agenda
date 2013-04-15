@@ -5,6 +5,8 @@
 package controller.dao;
 
 import controller.dao.db.Connection;
+import controller.dao.model.FuncionarioDAO;
+import model.Funcionario;
 
 
 
@@ -14,6 +16,9 @@ import controller.dao.db.Connection;
  */
 public class Main {
     public static void main(String[] args) {
-        Connection.getConnection();
+        FuncionarioDAO f = new FuncionarioDAO(Funcionario.class);
+        for (Funcionario fd : f.selectAtivo()) {
+            System.out.println(fd);
+        }
     }
 }
