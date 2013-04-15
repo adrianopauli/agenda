@@ -18,13 +18,16 @@ import model.Funcionario;
  */
 @ManagedBean
 @SessionScoped
-public class loginBean implements Serializable{
+public class loginBean implements Serializable {
 
-    private String senha;
-    private String login;
-    private boolean logado;
+    private String senha = "";
+    private String login = "";
+    private boolean logado = false;
 
     public loginBean() {
+        login = "";
+        senha = "";
+        logado = false;
     }
 
     public String getSenha() {
@@ -37,7 +40,7 @@ public class loginBean implements Serializable{
         Funcionario f = dao.selectLogin(login, senha);
         if (f != null) {
             logado = true;
-            ct.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, f.getName()+" - Seja Bem Vindo", ""));
+            ct.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, f.getName() + " - Seja Bem Vindo", ""));
             login = "";
             senha = "";
             return "";

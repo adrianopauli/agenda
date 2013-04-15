@@ -19,18 +19,15 @@ and open the template in the editor.
         <h:panelGroup rendered="#{loginBean.logado}">
 
             <ui:include src="/template/menu/menu_adm.xhtml" />
-            <h:form>
-                <p:growl id="gr_message" />
-                <ui:insert name="corpo" id="container_corpo"/>
-            </h:form> 
+            <p:growl id="gr_message" />
+            <ui:insert name="corpo" id="container_corpo"/>
+
         </h:panelGroup>
 
         <h:panelGroup rendered="#{!loginBean.logado}">
             <ui:include src="/template/menu/menu_publico.xhtml" />
-            <h:form>
-                <p:growl id="gr_message" />
-                <ui:include src="/template/includes/telaLogin.xhtml" />
-            </h:form>
+            <ui:include src="/template/includes/telaLogin.xhtml" />
+
         </h:panelGroup>
 
         <ui:include src="/template/includes/rodape.xhtml" />

@@ -12,14 +12,10 @@
     </h:head>
     <h:body>
         <ui:include src="/template/includes/baner.xhtml" />
-        
+
         <ui:include src="/template/menu/menu_publico.xhtml" />
-        
-        <div id="corpo">
-            <p:growl id="gr_message" />
-            <ui:insert name="corpo" />
-        </div>
-        
+        <ui:insert name="corpo" />
+
         <ui:include src="/template/includes/rodape.xhtml" />
     </h:body>
 </html>
