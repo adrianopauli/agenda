@@ -9,7 +9,7 @@ and open the template in the editor.
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core">
-    <ui:composition>
+    <ui:composition template="/template/template_admin.xhtml">
         <ui:define name="corpo">
             <h:form>
                 <p:growl id="gr_message" />
@@ -21,14 +21,13 @@ and open the template in the editor.
                     </p:column>
                     
                     <p:column headerText="Cor">
-                        <h:outputText value="#{status.color}"/>
+                        <h:outputText value="#{status.descricao}" style="background-color:\##{status.color}; padding:10px;"/>
                     </p:column>
                     
                     <p:column headerText="Operações">
-                        <h:commandLink action="adm.cadastro.funcionario">
+                        <h:commandLink action="#{statusBean.edit()}">
                             <h:graphicImage library="imagens" name="edit.png" />
-                            <f:setPropertyActionListener target="#{statusBean.edit()}" 
-                                                         value="#{status}" />
+                            <f:setPropertyActionListener target="#{statusBean.status}" value="#{status}" />
                         </h:commandLink>
                     </p:column>
                 </p:dataTable>
