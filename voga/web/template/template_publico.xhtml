@@ -11,8 +11,9 @@
         <h:outputStylesheet library="css" name="estilos.css" />
     </h:head>
     <h:body>
-        <ui:include src="/template/includes/baner.xhtml" />
 
+        <ui:include src="/template/includes/baner.xhtml" />
+        <p:growl id="gr_message" />
         <ui:include src="/template/menu/menu_publico.xhtml" />
         <ui:insert name="corpo" />
 
