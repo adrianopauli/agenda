@@ -63,7 +63,7 @@ public class funcionarioBean implements BeanInteface<Funcionario> {
             Funcionario f = DAOfuncionario.selectByLogin(funcionario.getLogin());
             if(f == null){
                 DAOfuncionario.save(funcionario);
-                ct.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Funcionario cadastrado!", ""));
+                ct.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Salvo", ""));
                 return "adm.listar.funcionario";
             }else{
                 ct.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario ja existe!", ""));

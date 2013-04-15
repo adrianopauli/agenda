@@ -14,19 +14,25 @@ and open the template in the editor.
         <h:outputStylesheet library="css" name="estilos.css" />
     </h:head>
     <h:body>
-        <ui:include src="/template/includes/baner.xhtml" />
+        <ui:include src="/template/includes/baner.xhtml" />]
 
         <h:panelGroup rendered="#{loginBean.logado}">
-            <p:growl id="gr_message" />
+
             <ui:include src="/template/menu/menu_adm.xhtml" />
-            <ui:insert name="corpo" id="container_corpo"/>
+            <h:form>
+                <p:growl id="gr_message" />
+                <ui:insert name="corpo" id="container_corpo"/>
+            </h:form> 
         </h:panelGroup>
-        
+
         <h:panelGroup rendered="#{!loginBean.logado}">
             <ui:include src="/template/menu/menu_publico.xhtml" />
-            <ui:include src="/template/includes/telaLogin.xhtml" />
+            <h:form>
+                <p:growl id="gr_message" />
+                <ui:include src="/template/includes/telaLogin.xhtml" />
+            </h:form>
         </h:panelGroup>
-       
+
         <ui:include src="/template/includes/rodape.xhtml" />
     </h:body>
 </html>

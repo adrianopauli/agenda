@@ -10,28 +10,26 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core">
     <ui:composition template="/template/template_admin.xhtml">
+
         <ui:define name="corpo">
-            <h:form>
-                <p:growl id="gr_message" />
-                <p:dataTable var="status" value="#{statusBean.all}"
-                             paginator="true" paginatorPosition="bottom" emptyMessage="Não há Status Cadastrados">
-                    
-                    <p:column headerText="Descrição">
-                        <h:outputText value="#{status.descricao}"/>
-                    </p:column>
-                    
-                    <p:column headerText="Cor">
-                        <h:outputText value="#{status.descricao}" style="background-color:\##{status.color}; padding:10px;"/>
-                    </p:column>
-                    
-                    <p:column headerText="Operações">
-                        <h:commandLink action="#{statusBean.edit()}">
-                            <h:graphicImage library="imagens" name="edit.png" />
-                            <f:setPropertyActionListener target="#{statusBean.status}" value="#{status}" />
-                        </h:commandLink>
-                    </p:column>
-                </p:dataTable>
-            </h:form>
+            <p:dataTable var="status" value="#{statusBean.all}"
+                         paginator="true" paginatorPosition="bottom" emptyMessage="Não há Status Cadastrados">
+
+                <p:column headerText="Descrição">
+                    <h:outputText value="#{status.descricao}"/>
+                </p:column>
+
+                <p:column headerText="Cor">
+                    <h:outputText value="#{status.descricao}" style="background-color:\##{status.color}; padding:10px;"/>
+                </p:column>
+
+                <p:column headerText="Operações">
+                    <h:commandLink action="#{statusBean.edit()}">
+                        <h:graphicImage library="imagens" name="edit.png" />
+                        <f:setPropertyActionListener target="#{statusBean.status}" value="#{status}" />
+                    </h:commandLink>
+                </p:column>
+            </p:dataTable>
         </ui:define>
     </ui:composition>
 </html>

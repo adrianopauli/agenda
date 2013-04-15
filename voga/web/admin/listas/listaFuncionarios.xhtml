@@ -12,34 +12,31 @@ and open the template in the editor.
 
     <ui:composition template="/template/template_admin.xhtml">
         <ui:define name="corpo">
-            <h:form>
-                <p:growl id="gr_message" />
-                <p:dataTable var="funcionario" value="#{funcionarioBean.all}" 
-                             paginator="true" rows="15" 
-                             paginatorPosition="bottom"
-                             emptyMessage="Não a funcionarios cadastrados!">
-                    
-                    <p:column headerText="Nome:">
-                        <h:outputText value="#{funcionario.name}" />
-                    </p:column>
-                    <p:column headerText="Login:">
-                        <h:outputText value="#{funcionario.login}" />
-                    </p:column>
-                    <p:column headerText="Administrador">
-                        <h:graphicImage library="imagens" name="administrador.png" rendered="#{funcionario.admin}"/>
-                    </p:column>
-                    <p:column headerText="Agendamentos">
-                        <h:graphicImage library="imagens" name="calendar.png" rendered="#{funcionario.ativo}"/>
-                    </p:column>
-                    <p:column headerText="Operações">
-                        <h:commandLink action="adm.cadastro.funcionario">
-                            <h:graphicImage library="imagens" name="edit.png" />
-                            <f:setPropertyActionListener target="#{funcionarioBean.funcionario}" 
-                                                         value="#{funcionario}" />
-                        </h:commandLink>
-                    </p:column>
-                </p:dataTable>
-            </h:form>
+            <p:dataTable var="funcionario" value="#{funcionarioBean.all}" 
+                         paginator="true" rows="15" 
+                         paginatorPosition="bottom"
+                         emptyMessage="Não a funcionarios cadastrados!">
+
+                <p:column headerText="Nome:">
+                    <h:outputText value="#{funcionario.name}" />
+                </p:column>
+                <p:column headerText="Login:">
+                    <h:outputText value="#{funcionario.login}" />
+                </p:column>
+                <p:column headerText="Administrador">
+                    <h:graphicImage library="imagens" name="administrador.png" rendered="#{funcionario.admin}"/>
+                </p:column>
+                <p:column headerText="Agendamentos">
+                    <h:graphicImage library="imagens" name="calendar.png" rendered="#{funcionario.ativo}"/>
+                </p:column>
+                <p:column headerText="Operações">
+                    <h:commandLink action="adm.cadastro.funcionario">
+                        <h:graphicImage library="imagens" name="edit.png" />
+                        <f:setPropertyActionListener target="#{funcionarioBean.funcionario}" 
+                                                     value="#{funcionario}" />
+                    </h:commandLink>
+                </p:column>
+            </p:dataTable>
         </ui:define>
 
     </ui:composition>

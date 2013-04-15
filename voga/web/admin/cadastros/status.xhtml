@@ -11,24 +11,21 @@ and open the template in the editor.
       xmlns:f="http://java.sun.com/jsf/core">
     <ui:composition template="/template/template_admin.xhtml">
         <ui:define name="corpo">
-            <h:form>
-                <p:panel header="Cadastro de Status">
-                    <p:growl id="gr_message" />
-                    <h:inputHidden value="#{statusBean.status.codigo}" />
-                    
-                    <h:panelGrid columns="2">
-                        <h:outputLabel value="Descrição:"  />
-                        <p:inputText  size="50" value="#{statusBean.status.descricao}" validatorMessage="Descrição inválida!">
-                            <f:validateLength minimum="3" />
-                        </p:inputText>
-                        <h:outputLabel value="Cor:" />
-                        <p:colorPicker value="#{statusBean.status.color}" mode="inline"/>  
-                        <p:commandButton value="Salvar" 
-                                         update="gr_message" 
-                                         action="#{statusBean.submit()}"/>
-                    </h:panelGrid>
-                </p:panel>
-            </h:form>
+            <p:panel header="Cadastro de Status">
+                <h:inputHidden value="#{statusBean.status.codigo}" />
+
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Descrição:"  />
+                    <p:inputText  size="50" value="#{statusBean.status.descricao}" validatorMessage="Descrição inválida!">
+                        <f:validateLength minimum="3" />
+                    </p:inputText>
+                    <h:outputLabel value="Cor:" />
+                    <p:colorPicker value="#{statusBean.status.color}" mode="inline"/>  
+                    <p:commandButton value="Salvar" 
+                                     update="gr_message" 
+                                     action="#{statusBean.submit()}"/>
+                </h:panelGrid>
+            </p:panel>
         </ui:define>
     </ui:composition>
 </html>
