@@ -35,7 +35,7 @@ public class statusBean implements BeanInteface<Status> {
             validator = false;
         }
         Status s = dao.selectByColor(status.getColor());
-        if(s != null){
+        if(s != null && status.getCodigo()!= s.getCodigo()){
             ct.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Cor já cadastrada", ""));
             validator = false;
         }
