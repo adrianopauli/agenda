@@ -40,5 +40,13 @@
             <from-outcome>adm.listar.status</from-outcome>
             <to-view-id>/admin/listas/listastatus.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>adm.buscar.funcionario</from-outcome>
+            <to-view-id>/admin/consultas/consultaFuncionario.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>adm.buscar.agendamento</from-outcome>
+            <to-view-id>/admin/consultas/consultaAgendamento.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
 </faces-config>

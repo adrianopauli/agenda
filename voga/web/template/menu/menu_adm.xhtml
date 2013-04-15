@@ -12,7 +12,7 @@ and open the template in the editor.
     <ui:composition id="menu">
         <h:form>
             <p:menubar autoDisplay="false">
-                <p:menuitem value="Home" action="home.home" ajax="false"/>
+                <p:menuitem value="Home" action="home.adm" ajax="false"/>
                 <p:submenu label="Cadastros">
                     <p:submenu label="Funcionarios">
                         <p:menuitem value="Cadastrar" action="#{funcionarioBean.novo()}" ajax="false"/>
@@ -24,8 +24,8 @@ and open the template in the editor.
                     </p:submenu>
                 </p:submenu>
                 <p:submenu label="Consultas">
-                    <p:menuitem value="Agendamentos" />
-                    <p:menuitem value="Funcionarios" />
+                    <p:menuitem value="Agendamentos" action="adm.buscar.agendamento" ajax="false"/>
+                    <p:menuitem value="Funcionarios" action="adm.buscar.funcionario" ajax="false"/>
                 </p:submenu>
                 <p:menuitem value="Deslogar" action="#{loginBean.deslogar()}" ajax="false"/>          
             </p:menubar>
