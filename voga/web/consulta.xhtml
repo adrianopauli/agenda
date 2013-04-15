@@ -2,12 +2,49 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:composition template="/template/template_publico.xhtml">
         <ui:define name="corpo" >
             <p:panel header="Busca Agendamento">
-                <p:calendar />
+                <h:form>
+                    <h:panelGrid columns="2" >
+                        <h:outputLabel value="Funcionario:" />
+                        <p:selectOneMenu value="#{consultaBean.f}"
+                                         effect="fade"
+                                         var="func"
+                                         panelStyle="width : 150px"
+                                         style="width: 160px"
+                                         filter="true"
+                                         filterMatchMode="startWith">   
+                            <f:selectItems value="#{consultaBean.funcionarios}"
+                                           var="funcionario"
+                                           itemLabel="#{funcionario.name}"
+                                           itemValue="#{funcionario}" />
+                            <p:column>
+                                #{func.name}
+                            </p:column>
+                        </p:selectOneMenu>
+
+                        <h:outputLabel value="Data:" />
+                        <p:calendar id="cal" 
+                                    mode="inline" 
+                                    pages="3" />
+
+                        <h:outputLabel value="Horario:" /> 
+                        <p:calendar pattern="HH:mm" 
+                                    timeOnly="true" 
+                                    stepMinute="15"
+                                    locale="pt" 
+                                    minHour="7"
+                                    maxHour="23"/>
+
+                        <p:commandButton value="Buscar"/>    
+
+                    </h:panelGrid>
+                </h:form>
             </p:panel>
         </ui:define>
     </ui:composition>
