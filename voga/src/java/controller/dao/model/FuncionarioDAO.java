@@ -1,6 +1,8 @@
 package controller.dao.model;
 
 import controller.dao.db.GenericDAOImplementacao;
+import java.util.ArrayList;
+import java.util.List;
 import model.Funcionario;
 
 public class FuncionarioDAO extends GenericDAOImplementacao<Funcionario> {
@@ -34,5 +36,30 @@ public class FuncionarioDAO extends GenericDAOImplementacao<Funcionario> {
         } catch (Exception e) {
         }
         return f;
+    }
+    
+    public List<Funcionario> selectAtivo(){
+        List<Funcionario> funcionarios = new ArrayList<Funcionario>();
+        try {
+            funcionarios = entityManager.createQuery("SELECT f FROM Funcionario f where "
+                    + "f.func_ativo = :ativo and f.func_admin = :admin")
+                    .setParameter("ativo", true)
+                    .setParameter("admin", false)
+                    .getResultList();
+        } catch (Exception e) {}
+        return funcionarios;
+    }
+    
+    public List<Funcionario> selectAtivoByName(String name){
+        List<Funcionario> funcionarios = new ArrayList<Funcionario>();
+        try {
+            funcionarios = entityManager.createQuery("SELECT f FROM Funcionario f where "
+                    + " f.func_name like :name and f.func_ativo = :ativo and f.func_admin = :admin")
+                    .setParameter("name", "%"+name+"%")
+                    .setParameter("ativo", true)
+                    .setParameter("admin", false)
+                    .getResultList();
+        } catch (Exception e) {}
+        return funcionarios;
     }
 }
