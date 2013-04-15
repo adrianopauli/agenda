@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template/template_publico.xhtml">
         <ui:define name="corpo" >
-            
+            <p:panel header="Busca Agendamento">
+                <p:calendar />
+            </p:panel>
         </ui:define>
     </ui:composition>
 </html>
