@@ -16,18 +16,17 @@ and open the template in the editor.
                     <p:growl id="gr_message" />
                     <h:inputHidden value="#{statusBean.status.codigo}" />
                     
-                    <p:panelGrid columns="2">
+                    <h:panelGrid columns="2">
                         <h:outputLabel value="Descrição:"  />
-                        <p:inputText  size="100" value="#{statusBean.status.descricao}" validatorMessage="Descrição inválida!">
+                        <p:inputText  size="50" value="#{statusBean.status.descricao}" validatorMessage="Descrição inválida!">
                             <f:validateLength minimum="3" />
-                            <f:validateRequired />
                         </p:inputText>
                         <h:outputLabel value="Cor:" />
-                        <p:colorPicker value="#{statusBean.status.color}" widgetVar="picker"/>  
+                        <p:colorPicker value="#{statusBean.status.color}" mode="inline"/>  
                         <p:commandButton value="Salvar" 
                                          update="gr_message" 
                                          action="#{statusBean.submit()}"/>
-                    </p:panelGrid>
+                    </h:panelGrid>
                 </p:panel>
             </h:form>
         </ui:define>

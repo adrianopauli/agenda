@@ -19,16 +19,13 @@ and open the template in the editor.
                         <p:menuitem value="Listar" action="adm.listar.funcionario" ajax="false"/>
                     </p:submenu>
                     <p:submenu label="Status">
-                        <p:menuitem value="Cadastrar" action="#{funcionarioBean.novo()}" ajax="false"/>
-                        <p:menuitem value="Listar" action="adm.listar.funcionario" ajax="false"/>
+                        <p:menuitem value="Cadastrar" action="#{statusBean.novo()}" ajax="false"/>
+                        <p:menuitem value="Listar" action="adm.listar.status" ajax="false"/>
                     </p:submenu>
                 </p:submenu>
                 <p:submenu label="Consultas">
                     <p:menuitem value="Agendamentos" />
                     <p:menuitem value="Funcionarios" />
-                </p:submenu>
-                <p:submenu label="Listar">
-                    <p:menuitem value="Agendamentos" />
                 </p:submenu>
                 <p:menuitem value="Deslogar" action="#{loginBean.deslogar()}" ajax="false"/>          
             </p:menubar>
