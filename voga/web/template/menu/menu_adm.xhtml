@@ -12,22 +12,22 @@ and open the template in the editor.
     <ui:composition id="menu">
         <h:form>
             <p:menubar autoDisplay="false">
-                <p:menuitem value="Home" action="home.adm" ajax="false"/>
+                <p:menuitem value="Home" action="home.adm"/>
                 <p:submenu label="Cadastros">
                     <p:submenu label="Funcionarios">
-                        <p:menuitem value="Cadastrar" action="#{funcionarioBean.novo()}" ajax="false"/>
-                        <p:menuitem value="Listar" action="adm.listar.funcionario" ajax="false"/>
+                        <p:menuitem value="Cadastrar" action="#{funcionarioBean.novo()}"/>
+                        <p:menuitem value="Listar" action="adm.listar.funcionario"/>
                     </p:submenu>
                     <p:submenu label="Status">
-                        <p:menuitem value="Cadastrar" action="#{statusBean.novo()}" ajax="false"/>
-                        <p:menuitem value="Listar" action="adm.listar.status" ajax="false"/>
+                        <p:menuitem value="Cadastrar" action="#{statusBean.novo()}"/>
+                        <p:menuitem value="Listar" action="adm.listar.status"/>
                     </p:submenu>
                 </p:submenu>
                 <p:submenu label="Consultas">
-                    <p:menuitem value="Agendamentos" action="adm.buscar.agendamento" ajax="false"/>
-                    <p:menuitem value="Funcionarios" action="adm.buscar.funcionario" ajax="false"/>
+                    <p:menuitem value="Agendamentos" action="adm.buscar.agendamento"/>
+                    <p:menuitem value="Funcionarios" action="adm.buscar.funcionario"/>
                 </p:submenu>
-                <p:menuitem value="Deslogar" action="#{loginBean.deslogar()}" ajax="false"/>          
+                <p:menuitem value="Deslogar" action="#{loginBean.deslogar()}"/>          
             </p:menubar>
         </h:form> 
     </ui:composition>
