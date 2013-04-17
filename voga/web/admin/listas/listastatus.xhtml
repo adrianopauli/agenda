@@ -13,7 +13,7 @@ and open the template in the editor.
 
         <ui:define name="corpo">
             <h:form>
-                <p:growl id="gr_message" />
+                <p:growl id="gr_message" showDetail="false"/>
                 <p:dataTable var="status" value="#{statusBean.all}"
                              paginator="true" paginatorPosition="bottom" emptyMessage="Não há Status Cadastrados">
 

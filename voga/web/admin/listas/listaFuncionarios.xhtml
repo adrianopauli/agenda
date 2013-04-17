@@ -13,7 +13,7 @@ and open the template in the editor.
     <ui:composition template="/template/template_admin.xhtml">
         <ui:define name="corpo">
             <h:form>
-                <p:growl id="gr_message" />
+                <p:growl id="gr_message" showDetail="false"/>
                 <p:dataTable var="funcionario" value="#{funcionarioBean.all}" 
                              paginator="true" rows="15" 
                              paginatorPosition="bottom"
@@ -23,7 +23,7 @@ and open the template in the editor.
                         <h:outputText value="#{funcionario.name}" />
                     </p:column>
                     <p:column headerText="Login:">
-                        <h:outputText value="#{funcionario.login}" />
+                        <h:outputText value="#{funcionario.senha}" />
                     </p:column>
                     <p:column headerText="Administrador">
                         <h:graphicImage library="imagens" name="administrador.png" rendered="#{funcionario.admin}"/>

@@ -29,8 +29,20 @@ public class FuncionarioDAO extends GenericDAOImplementacao<Funcionario> {
         Funcionario f = null;
         try {
             f = (Funcionario) entityManager.createQuery("SELECT f FROM Funcionario f where "
-                    + "f.func_login = :login")
+                    + "f.login = :login")
                     .setParameter("login", login)
+                    .getSingleResult();
+            
+        } catch (Exception e) {
+        }
+        return f;
+    }
+    public Funcionario selectByCodigo(long codigo) {
+        Funcionario f = null;
+        try {
+            f = (Funcionario) entityManager.createQuery("SELECT f FROM Funcionario f where "
+                    + "f.codigo = :codigo")
+                    .setParameter("codigo",codigo)
                     .getSingleResult();
             
         } catch (Exception e) {
@@ -42,9 +54,8 @@ public class FuncionarioDAO extends GenericDAOImplementacao<Funcionario> {
         List<Funcionario> funcionarios = new ArrayList<Funcionario>();
         try {
             funcionarios = entityManager.createQuery("SELECT f FROM Funcionario f where "
-                    + "f.ativo = :ativo and f.admin = :admin")
+                    + "f.ativo = :ativo")
                     .setParameter("ativo", true)
-                    .setParameter("admin", false)
                     .getResultList();
         } catch (Exception e) {
         e.printStackTrace();}

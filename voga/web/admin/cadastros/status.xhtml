@@ -12,7 +12,7 @@ and open the template in the editor.
     <ui:composition template="/template/template_admin.xhtml">
         <ui:define name="corpo">
             <h:form>
-                <p:growl id="gr_message" />
+                <p:growl id="gr_message" showDetail="false"/>
                 <p:panel header="Cadastro de Status">
                     <h:inputHidden value="#{statusBean.status.codigo}" />
 
@@ -25,7 +25,7 @@ and open the template in the editor.
                         <p:colorPicker value="#{statusBean.status.color}" mode="inline"/>  
                         <p:commandButton value="Salvar" 
                                          update="gr_message" 
-                                         action="#{statusBean.submit()}"/>
+                                         action="#{statusBean.submit()}" ajax="false"/>
                     </h:panelGrid>
                 </p:panel>
             </h:form>
