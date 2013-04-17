@@ -43,6 +43,7 @@ public class Funcionario implements Serializable  {
 	private List<Processo> processos;
 	
 	public Funcionario() {
+            setCodigo(0);
 	}
 
 	public long getCodigo() {

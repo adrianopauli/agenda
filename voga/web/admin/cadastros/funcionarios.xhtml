@@ -8,37 +8,30 @@
     <ui:composition template="/template/template_admin.xhtml">
         <ui:define name="corpo">
             <h:form>
-                <p:growl id="gr_message" />
+                <p:growl id="gr_message" showDetail="false"/>
                 <p:panel header="Funcionario">
                     <h:inputHidden value="#{funcionarioBean.funcionario.codigo}" />
-
                     <h:panelGrid columns="2">
                         <h:outputLabel value="Nome:" />
                         <p:inputText id="funcionario_name" 
-                                     value="#{funcionarioBean.funcionario.name}"
-                                     validatorMessage="Nome inválido!">
-                            <f:validateLength minimum="3" />
-                        </p:inputText>
+                                     value="#{funcionarioBean.funcionario.name}"/>
 
                         <h:outputLabel value="Login:" />
                         <p:inputText id="funcionario_login" 
-                                     value="#{funcionarioBean.funcionario.login}" 
-                                     required="true"
-                                     requiredMessage="Login inválido!"/>
+                                     value="#{funcionarioBean.funcionario.login}"/>
 
-                        <h:outputLabel value="Senha: " />
+                        <h:outputLabel value="Senha: " 
+                                       rendered="#{funcionarioBean.funcionario.codigo == 0}"/>
                         <p:password id="funcionario_senha" 
                                     value="#{funcionarioBean.funcionario.senha}" 
-                                    validatorMessage="Senha inválida!">
-                            <f:validateLength minimum="6" />
-                        </p:password>
+                                    rendered="#{funcionarioBean.funcionario.codigo == 0}"/>
 
-                        <h:outputLabel value="Confirma Senha:" />
-                        <p:password id="funcionario_senha_" 
+                        <h:outputLabel value="Confirma Senha:" 
+                                       rendered="#{funcionarioBean.funcionario.codigo == 0}"/>
+                        <p:password id="funcionario_confirma_senha" 
                                     value="#{funcionarioBean.confirmacaoSenha}" 
-                                    validatorMessage="Confirma Senha inválida!">
-                            <f:validateLength minimum="6" />
-                        </p:password>
+                                    rendered="#{funcionarioBean.funcionario.codigo == 0}"/>
+
 
                         <h:outputLabel value="Administrador:" />
                         <p:selectBooleanCheckbox value="#{funcionarioBean.funcionario.admin}" 
@@ -48,13 +41,41 @@
                             <f:selectItem itemLabel="Sim" itemValue="true" />
                             <f:selectItem itemLabel="Não" itemValue="false" />
                         </p:selectOneRadio>
+                        <br/>
+                        <p:commandLink value="Alterar Senha" onclick="dlg.show()"/>
+
                         <p:commandButton value="Salvar" 
                                          update="gr_message" 
-                                         action="#{funcionarioBean.submit()}"/>
+                                         action="#{funcionarioBean.submit()}"
+                                         ajax="false"/>
+
+                        <p:commandButton value="Voltar"
+                                         action="adm.listar.funcionario"
+                                         rendered="#{funcionarioBean.funcionario.codigo != 0}"
+                                         ajax="false"/>
                     </h:panelGrid>
                 </p:panel>
+                <p:dialog id="dialog" header="Alterar Senha" widgetVar="dlg"
+                          resizable="false"
+                          modal="true"
+                          draggable="false">
+                    <!--                <h:form>-->
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel value="Senha: "/>
+                        <p:password id="troca_senha" 
+                                    value="#{funcionarioBean.funcionario.senha}"/>
+
+                        <h:outputLabel value="Confirma Senha:"/>
+                        <p:password id="troca_confirma_senha" 
+                                    value="#{funcionarioBean.confirmacaoSenha}"/>
+                        <p:commandButton id="loginButton" value="Login" update="gr_message"   
+                                         actionListener="#{funcionarioBean.validarSenha}"
+                                         oncomplete="args.loggedIn?dlg.hide():dlg.show();"/>  
+                        <p:commandButton value="Cancelar" oncomplete="dlg.hide();"/>
+                    </h:panelGrid>
+                    <!--</h:form>-->
+                </p:dialog>
             </h:form>
         </ui:define>
-
     </ui:composition>
 </html>
