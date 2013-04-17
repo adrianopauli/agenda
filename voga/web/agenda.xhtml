@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template/template_agenda.xhtml">
+        <ui:define name="corpo" >
+            <h:form>
+                <p:growl id="gr_message" />
+                <h:panelGrid columns="3" >
+                    <h:outputLabel value="Funcionario:" />
+                    <p:selectOneMenu value="#{consultaBean.f}"
+                                     effect="fade"
+                                     var="func"
+                                     panelStyle="width : 150px"
+                                     style="width: 160px">   
+                        <f:selectItems value="#{consultaBean.funcionarios}"
+                                       var="funcionario"
+                                       itemLabel="#{funcionario.name}"
+                                       itemValue="#{funcionario}" />
+                        <p:column>
+                            #{func.name}
+                        </p:column>
+                    </p:selectOneMenu>
+
+                </h:panelGrid>
+                <p:schedule maxTime="23" 
+                            minTime="7" 
+                            locale="pt"
+                            slotMinutes="15"
+                            allDaySlot="false"
+                            axisFormat="HH:mm"
+                            view="agendaWeek"
+                            timeFormat="H:m', columnFormat : {    
+                            month : 'ddd dd/MM/yyyy',
+                            week : 'ddd dd/MM', 
+                            day : 'dddd dd/MM'}, 
+                            dummy:'"
+                            >
+                    <p:ajax event="dateSelect" oncomplete="dlg.show()" />
+                </p:schedule>
+
+                <p:dialog id="dialog" header="AGENDAR" widgetVar="dlg" 
+                          resizable="false" 
+                          modal="true"
+                          closable="false"
+                          draggable="false">
+                    <h:form>
+                        <h:panelGrid columns="2" cellpadding="5">
+
+                            <h:outputLabel for="cliente" value="Cliente:" />  
+                            <p:inputText id="cliente" label="cliente" 
+                                         value="#{agendaBean.agenda.cliente}"/>  
+                            
+                            <h:outputLabel for="telefone" value="Telefone:" />  
+                            <p:inputMask id="telefone"  mask="(99)-9999-9999" 
+                                         value="#{agendaBean.agenda.telefone}"/>
+                            
+                            <h:outputLabel for="celular" value="Celular:" />  
+                            <p:inputMask id="celular"  mask="(99)-9999-9999" 
+                                         value="#{agendaBean.agenda.celular}"/>
+
+                            <h:outputLabel for="descricao" value="Descrição:" />  
+                            <p:inputTextarea rows="3" cols="22"/>
+
+                            <h:outputLabel for="login" value="login:" />  
+                            <p:inputText id="login" label="login" />  
+
+                            <h:outputLabel for="senha" value="Senha:" />  
+                            <p:password id="senha" value="senha"/>
+
+                            <p:commandButton value="Agendar" />
+                            <p:commandButton value="Cancelar" oncomplete="dlg.hide()"/>
+                        </h:panelGrid>
+                    </h:form>
+                </p:dialog>
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</html>

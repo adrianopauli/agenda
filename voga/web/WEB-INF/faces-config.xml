@@ -13,6 +13,10 @@
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
+            <from-outcome>home.agenda</from-outcome>
+            <to-view-id>/agenda.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
             <from-outcome>home.sobre</from-outcome>
             <to-view-id>/sobre.xhtml</to-view-id>
         </navigation-case>
